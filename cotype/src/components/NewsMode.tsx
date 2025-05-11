@@ -111,7 +111,7 @@ export default function NewsMode(props: NewsModeProps) {
     let globalIndex = 0;
 
     return lines.map((line, lineIndex) => {
-      const chars = line.split('').map((char, charIndex) => {
+      const chars = line.split('').map((char) => {
         const index = globalIndex++;
         let className = 'untyped-char';
         

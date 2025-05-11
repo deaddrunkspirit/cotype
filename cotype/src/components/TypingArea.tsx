@@ -1,11 +1,8 @@
-import { createSignal, onMount, onCleanup, Show, createEffect } from 'solid-js';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/tokyo-night-dark.css';
+import { createSignal, createEffect, Show } from 'solid-js';
 import NewsMode from './NewsMode';
 import CodeMode from './CodeMode';
 import ExtraMode from './ExtraMode';
 import Stats from './Stats';
-import PasteArea from './PasteArea';
 
 interface TypingAreaProps {
   text: string;
@@ -16,14 +13,11 @@ interface TypingAreaProps {
 export default function TypingArea(props: TypingAreaProps) {
   const [currentIndex, setCurrentIndex] = createSignal(0);
   const [errors, setErrors] = createSignal<number[]>([]);
-  const [isFocused, setIsFocused] = createSignal(false);
   const [mode, setMode] = createSignal<'news' | 'code' | 'extra'>('news');
   const [pastedText, setPastedText] = createSignal('');
   const [githubUrl, setGithubUrl] = createSignal('');
   const [problematicKeys, setProblematicKeys] = createSignal<Record<string, number>>({});
   const [currentText, setCurrentText] = createSignal(props.text);
-  const [startTime, setStartTime] = createSignal<number | null>(null);
-  const [endTime, setEndTime] = createSignal<number | null>(null);
 
   // Default text sources
   const defaultNewsText = 'My father\'s family name being Pirrip, and my Christian name Philip, my infant tongue could make of both names nothing longer or more explicit than Pip. So, I called myself Pip, and came to be called Pip.';
@@ -55,8 +49,6 @@ export default function TypingArea(props: TypingAreaProps) {
     setCurrentIndex(0);
     setErrors([]);
     setProblematicKeys({});
-    setStartTime(null);
-    setEndTime(null);
     // Reset all statistics by calling onTypingProgress with initial values
     props.onTypingProgress(0, []);
   };

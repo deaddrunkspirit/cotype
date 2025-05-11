@@ -1,5 +1,4 @@
-import { createSignal, onMount, onCleanup } from 'solid-js';
-import hljs from 'highlight.js';
+import { createSignal, onMount, onCleanup, Show } from 'solid-js';
 import '../styles/highlight.css';
 
 interface CodeModeProps {
@@ -71,7 +70,7 @@ export default function CodeMode(props: CodeModeProps) {
     const text = props.text.slice(0, currentIndex());
     const lines = text.split('\n');
     const line = lines.length - 1;
-    const column = lines[lines.length - 1].length;
+    const column = lines[lines.length - 1].length ;
     setCursorPosition({ line, column });
   };
 
@@ -97,7 +96,7 @@ export default function CodeMode(props: CodeModeProps) {
     let globalIndex = 0;
 
     return lines.map((line, lineIndex) => {
-      const chars = line.split('').map((char, charIndex) => {
+      const chars = line.split('').map((char) => {
         const index = globalIndex++;
         let className = 'untyped-char';
         

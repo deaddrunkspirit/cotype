@@ -3,21 +3,18 @@ import ModeSelector from './components/ModeSelector';
 import TypingArea from './components/TypingArea';
 import ExtraMode from './components/ExtraMode';
 
-type Mode = 'news' | 'code' | 'extra';
-
 function App() {
   const [showExtra, setShowExtra] = createSignal(false);
   const [startTime, setStartTime] = createSignal<number | null>(null);
-  const [endTime, setEndTime] = createSignal<number | null>(null);
 
-  const handleTypingProgress = (index: number, newErrors: number[]) => {
+  const handleTypingProgress = () => {
     if (!startTime()) {
       setStartTime(Date.now());
     }
   };
 
   const handleComplete = () => {
-    setEndTime(Date.now());
+    // Remove unused variables: endTime, index, newErrors, and any others flagged by the TypeScript error log.
   };
 
   return (

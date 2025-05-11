@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, createEffect } from 'solid-js';
+import { createSignal, createEffect } from 'solid-js';
 
 interface StatsProps {
   currentIndex: number;
@@ -50,10 +50,6 @@ export default function Stats(props: StatsProps) {
     const errorRate = props.errors.length / props.currentIndex;
     return Math.round((1 - errorRate) * 100);
   };
-
-  onCleanup(() => {
-    if (timer) clearInterval(timer);
-  });
 
   return (
     <div class="mt-4 grid grid-cols-3 gap-4 text-center">
