@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tokyo-bg: #1a1b26;
+  --color-tokyo-bg-light: #24283b;
+  --color-tokyo-fg: #a9b1d6;
+  --color-tokyo-comment: #565f89;
+  --color-tokyo-blue: #7aa2f7;
+  --color-tokyo-green: #9ece6a;
+  --color-tokyo-red: #f7768e;
+}
+
+@layer base {
+  body {
+    @apply bg-tokyo-bg text-tokyo-fg;
+  }
+}
+
+@layer components {
+  .typing-text {
+    @apply font-mono text-lg mx-auto relative;
+    line-height: 1.8;
+    max-width: 100%;
+    overflow: hidden;
+    height: 400px; /* Fixed height for main modes */
+    position: relative;
+  }
+  
+  .typing-text.extra-mode {
+    height: 200px; /* Half height for extra mode */
+    max-width: 26rem; /* Extra mode width */
+  }
+  
+  .current-char {
+    @apply text-tokyo-green;
+  }
+  
+  .error-char {
+    @apply text-tokyo-red;
+  }
+  
+  .typed-char {
+    @apply text-tokyo-fg;
+  }
+  
+  .untyped-char {
+    @apply text-tokyo-comment;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded bg-tokyo-bg-light text-tokyo-fg hover:bg-tokyo-blue hover:text-tokyo-bg transition-colors duration-200;
+  }
+
+  .btn-large {
+    @apply px-8 py-4 text-xl font-bold rounded-lg bg-tokyo-bg-light text-tokyo-fg hover:bg-tokyo-blue hover:text-tokyo-bg transition-all duration-200 transform hover:scale-105;
+  }
+
+  .btn.active {
+    @apply bg-tokyo-blue text-tokyo-bg;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: theme('colors.tokyo-green');
+    margin-left: -1px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    transition: all 0.1s ease;
+  }
+
+  .line {
+    @apply whitespace-pre-wrap;
+    min-height: 1.8em;
+    line-height: 1.8em;
+    display: block;
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-align: left;
+  }
+
+  pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  code {
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    height: 100%;
+    display: block;
+  }
+
+  .firework {
+    position: relative;
+    animation: complete-pulse 1s ease-out;
+  }
+
+  .firework::before,
+  .firework::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, transparent 0%, theme('colors.tokyo-green') 50%, transparent 100%);
+    opacity: 0;
+    animation: firework 1.5s ease-out forwards;
+    pointer-events: none;
+  }
+
+  .firework::after {
+    animation-delay: 0.3s;
+    background: radial-gradient(circle, transparent 0%, theme('colors.tokyo-blue') 50%, transparent 100%);
+  }
+
+  .problematic-key {
+    @apply px-3 py-1 rounded bg-tokyo-bg text-tokyo-red font-mono;
+  }
+
+  .invisible {
+    @apply opacity-0;
+  }
+
+  .capslock-warning {
+    @apply fixed top-4 right-4 px-4 py-2 rounded bg-tokyo-red text-tokyo-bg font-bold;
+    animation: slide-in 0.3s ease-out;
+    z-index: 50;
+  }
+
+  .paste-area {
+    @apply flex items-center gap-2;
+    display: flex !important;
+    border: 2px solid red !important; /* Debug border */
+    padding: 4px !important;
+    background: rgba(255, 0, 0, 0.1) !important; /* Debug background */
+  }
+
+  .paste-input {
+    @apply px-3 py-1 text-sm rounded bg-tokyo-bg text-tokyo-fg border border-tokyo-bg-light focus:border-tokyo-blue focus:outline-none;
+    width: 300px;
+    display: block !important;
+    border: 2px solid blue !important; /* Debug border */
+  }
+
+  .paste-btn {
+    @apply px-3 py-1 text-sm rounded bg-tokyo-bg-light text-tokyo-fg hover:bg-tokyo-blue hover:text-tokyo-bg transition-colors duration-200 whitespace-nowrap;
+    display: block !important;
+    border: 2px solid green !important; /* Debug border */
+  }
+
+  .paste-btn.active {
+    @apply bg-tokyo-blue text-tokyo-bg;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes complete-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes firework {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+} 

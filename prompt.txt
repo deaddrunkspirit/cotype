@@ -1,0 +1,24 @@
+
+Cotype is a simple web page where you can train your typing skills on a real texts, you can both train main writing skills by typing the news 
+or practice in code typing
+
+The idea is mostly to have a simple functionality with highlighting the symbol you are typing and show you the stats. You have two options:
+1. Type a predifened page of the news or of the code (you have a UI buttons to swith between modes)
+2. You can paste a url with text or with a github page and the text will appear automatically to type (in news mode it will be just text, in 
+code mode it is only a github link to a file)
+
+Each text is limited, after typing all the text you can check the stats (such as words per minuite, how long did it take to write, and 
+problematic keys), stats will appear in a section after the text
+also you have extra mode where a random words generated with problematic keys and you can type them as practice (after completing an extra, 
+you can either return to main section or take the extra again (it generates again))
+extra looks like regular section of typing
+
+
+I want an app written with TailwindCSS v4 and supplied with github pages with an auto CI CD like github actions so after push the page is 
+updated, if you decide to use framework use SolidJS or you can simply use lightweight js frameworks like alpine js and stick to the HTML JS 
+approach (pich only one either Solid or HTML/JS)
+
+I want this web app to have a tokyo night theme and highlighting, the animations should be smooth, if one or more characters are misspelled it 
+should highlight them red until the user "delete" them, the text is not changing it only highlights what you have mistyped, the character 
+which should be typed next should be typed next, should be highlighted green, text that is not yet been typed should be a color of comment and 
+after typed should have syntax highlight applied
