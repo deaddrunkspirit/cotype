@@ -28,6 +28,11 @@ jobs:
         env:
           VITE_BASE_URL: '/cotype/'
 
+      - name: Copy GitHub Pages files
+        run: |
+          cp .nojekyll dist/
+          cp 404.html dist/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
