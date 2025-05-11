@@ -1,5 +1,7 @@
 # Cotype - Typing Practice Application
 
+[https://deaddrunkspirit.github.io/cotype/](https://deaddrunkspirit.github.io/cotype/)
+
 A modern typing practice application built with SolidJS and TailwindCSS. Practice typing with news articles, code snippets, and targeted exercises.
 
 ## Features
