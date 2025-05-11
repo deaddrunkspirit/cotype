@@ -31,5 +31,6 @@ export default defineConfig({
       },
     },
   },
+  publicDir: 'public',
   base: process.env.VITE_BASE_URL || '/cotype/',
 })
