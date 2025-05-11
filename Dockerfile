@@ -32,7 +32,8 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application with base path
+ENV VITE_BASE_URL=/cotype/
 RUN npm run build
 
 # Serve with nginx
