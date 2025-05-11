@@ -20,15 +20,12 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      working-directory: ./cotype
       run: npm ci
     
     - name: Build
-      working-directory: ./cotype
       run: npm run build
     
     - name: Run tests
-      working-directory: ./cotype
       run: npm test
     
     - name: Deploy to GitHub Pages
@@ -36,4 +33,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./cotype/dist 
+        publish_dir: ./dist 
