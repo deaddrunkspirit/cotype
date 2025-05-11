@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/index.tsx","./src/components/codemode.tsx","./src/components/extramode.tsx","./src/components/modeselector.tsx","./src/components/newsmode.tsx","./src/components/pastearea.tsx","./src/components/stats.tsx","./src/components/typingarea.tsx","./src/types/css.d.ts"],"version":"5.8.3"}

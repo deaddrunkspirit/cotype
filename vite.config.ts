@@ -10,6 +10,9 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
+    headers: {
+      'Content-Type': 'application/javascript',
+    },
   },
   build: {
     target: 'esnext',
